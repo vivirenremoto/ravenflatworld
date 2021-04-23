@@ -1034,6 +1034,35 @@
         }
 
 
+        $(window).resize(function(){
+            screen_width = $(document).width();
+            screen_height = $(document).height();
+
+            screen_width_half = screen_width / 2;
+            screen_height_half = screen_height / 2;
+
+
+            
+
+        
+            current_x = (screen_width-player_width) / 2;
+            current_y = (screen_height-player_height) / 2;
+
+            $('#player').css('left', current_x+'px');
+            $('#player').css('top', current_y+'px');
+
+
+            
+            var rand = randomNumber(0, 3);
+            var zone = zones[rand];
+            $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
+
+
+
+
+        });
+
+
     </script>
 
 
