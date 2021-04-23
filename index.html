@@ -23,6 +23,8 @@
     <link rel="prefetch" href="static/kebab.jpg" />
     <link rel="prefetch" href="static/durum.jpg" />
     <link rel="prefetch" href="static/torrijas.jpg" />
+    <link rel="prefetch" href="static/doritos.png" />
+
     <link rel="prefetch" href="static/walking3.gif" />
     <link rel="prefetch" href="static/stopped.gif" />
     <link rel="prefetch" href="static/drink.gif" />
@@ -357,6 +359,11 @@
         foods.push({title:'kebab', ok: 700, values: [700,900], photo: 'static/kebab.jpg' });
         foods.push({title:'durum', ok: 600, values: [400,600], photo: 'static/durum.jpg' });
         foods.push({title:'torrijas', ok: 200, values: [200,500], photo: 'static/torrijas.jpg' });
+        foods.push({title:'doritos', ok: 200, values: [50,200], photo: 'static/doritos.png' });
+
+
+        foods.sort(() => Math.random() - 0.5);
+        
 
 
         $('#item').css('background-image', "url('" + foods[0].photo + "')").css('background-position','center center').css('background-repeat','no-repeat');
