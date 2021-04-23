@@ -28,8 +28,8 @@
     <link rel="prefetch" href="static/walking3.gif" />
     <link rel="prefetch" href="static/stopped.gif" />
     <link rel="prefetch" href="static/drink.gif" />
-    <link rel="prefetch" href="static/ok.png" />
-    <link rel="prefetch" href="static/no.png" />
+    <link rel="prefetch" href="static/ok2.png" />
+    <link rel="prefetch" href="static/no2.png" />
 
 
     <meta property="og:image" content="https://vivirenremoto.github.io/ravenflatworld/static/social.png">
@@ -70,13 +70,14 @@
         }
 
         body {
-            background: url('https://vivirenremoto.github.io/ageofcv/img/sand.jpg');/* url('static/bg.png?3');*/
+            background: url('static/sand.jpg');/* url('static/bg.png?3');*/
             touch-action: pan-x pan-y;
             overflow: hidden;
         }
 
 
         .button {
+            font-weight: bold;
             display:block;
             background: white;
             width: 250px;
@@ -139,6 +140,7 @@
         #player {
             
             image-rendering: pixelated;
+	        -webkit-filter: drop-shadow(6px 6px 10px rgba(0,0,0,0.4));
         }
 
         #item {
@@ -289,7 +291,7 @@
         vivirenremoto</a>
 
 
-    <div id="player" class="player" style="z-index:2;position:fixed;">
+    <div id="player" class="player " style="z-index:2;position:fixed;">
     </div>
 
     <div id="game">
@@ -308,7 +310,7 @@
         <!--<div id="enemy" style="background-size: 100% auto;z-index:1;position:fixed;"></div>-->
 
 
-        <div id="modal" style="display:none;text-align:center;z-index:99;position:fixed;left:0;top:0;width:100%;height:100%;background:white url('static/bg.png');">
+        <div id="modal" style="display:none;text-align:center;z-index:99;position:fixed;left:0;top:0;width:100%;height:100%;background:url('static/sand.jpg');">
             <h2 style="margin:20px 0;">¿Cuantas kcal tiene?
                 <span style="color:red;" id="food_name"></span></h2>
             <img src="static/bigmac.png" height="150">
@@ -362,7 +364,7 @@
 
         var index_food = -1;
         var foods = [];
-        foods.push({title:'big mac', ok: 500, values: [400,500], photo: 'static/bigmac.png' });
+        foods.push({title:'big mac', ok: 500, values: [100,500], photo: 'static/bigmac.png' });
         foods.push({title:'kebab', ok: 700, values: [700,900], photo: 'static/kebab.png' });
         foods.push({title:'durum', ok: 600, values: [400,600], photo: 'static/durum.png' });
         foods.push({title:'torrijas', ok: 200, values: [200,500], photo: 'static/torrijas.png' });
@@ -497,7 +499,7 @@
 
             
             if( foods[index_food].ok == value ){
-                $('#modal img').attr('src', 'static/ok.png');
+                $('#modal img').attr('src', 'static/ok2.png');
 
                 current_items++;
 
@@ -508,7 +510,7 @@
 
                 correct_answer = true;
             }else{
-                $('#modal img').attr('src', 'static/no.png');
+                $('#modal img').attr('src', 'static/no2.png');
 
                 
                 correct_answer = false;
@@ -517,40 +519,40 @@
             
             
 
-            
-            if ( current_items == max_items) {
-
-                $('#player').removeClass('player_walking').addClass('player_drinking');
-
+            setTimeout(function(){
                 
-                $('#modal').hide();
-                endGame();
-            }else{
-                setTimeout(function(){
-                $('#modal').hide();
+                if ( current_items == max_items) {
 
-                
-
-                if( correct_answer ){
                     $('#player').removeClass('player_walking').addClass('player_drinking');
 
+                    
+                    $('#modal').hide();
+                    endGame();
+                }else{
+                    $('#modal').hide();
 
-                        
+                    
+
+                    if( correct_answer ){
+                        $('#player').removeClass('player_walking').addClass('player_drinking');
 
 
-                    setTimeout(function () {
-                        if (current_items != max_items) {
-                            $('#player').removeClass('player_drinking');
-                        }
-                    }, 1000);
+                            
 
+
+                        setTimeout(function () {
+                            if (current_items != max_items) {
+                                $('#player').removeClass('player_drinking');
+                            }
+                        }, 1000);
+
+                    }
+
+                    $('#modal button').attr('disabled', false);
                 }
 
-                $('#modal button').attr('disabled', false);
             }, 500);
-            }
-
-
+                
 
 
             
