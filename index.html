@@ -20,9 +20,9 @@
 
     <link rel="prefetch" href="static/bg.png?3" />
     <link rel="prefetch" href="static/bigmac.png" />
-    <link rel="prefetch" href="static/kebab.jpg" />
-    <link rel="prefetch" href="static/durum.jpg" />
-    <link rel="prefetch" href="static/torrijas.jpg" />
+    <link rel="prefetch" href="static/kebab.png" />
+    <link rel="prefetch" href="static/durum.png" />
+    <link rel="prefetch" href="static/torrijas.png" />
     <link rel="prefetch" href="static/doritos.png" />
 
     <link rel="prefetch" href="static/walking3.gif" />
@@ -59,6 +59,10 @@
             /*IE*/
         }
 
+        .shadowed {
+	        -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+        }
+
         html,
         body {
             width: 100%;
@@ -66,7 +70,7 @@
         }
 
         body {
-            background: url('static/bg.png?3');
+            background: url('https://vivirenremoto.github.io/ageofcv/img/sand.jpg');/* url('static/bg.png?3');*/
             touch-action: pan-x pan-y;
             overflow: hidden;
         }
@@ -298,7 +302,7 @@
 
 
 
-        <div id="item" style="background: url('static/item1.png');z-index:1;background-size:contain;width:119px;height:100px;position:fixed;">
+        <div id="item" class="shadowed" style="background: url('static/item1.png');z-index:1;background-size:contain;width:119px;height:100px;position:fixed;">
         </div>
 
         <!--<div id="enemy" style="background-size: 100% auto;z-index:1;position:fixed;"></div>-->
@@ -359,9 +363,9 @@
         var index_food = -1;
         var foods = [];
         foods.push({title:'big mac', ok: 500, values: [400,500], photo: 'static/bigmac.png' });
-        foods.push({title:'kebab', ok: 700, values: [700,900], photo: 'static/kebab.jpg' });
-        foods.push({title:'durum', ok: 600, values: [400,600], photo: 'static/durum.jpg' });
-        foods.push({title:'torrijas', ok: 200, values: [200,500], photo: 'static/torrijas.jpg' });
+        foods.push({title:'kebab', ok: 700, values: [700,900], photo: 'static/kebab.png' });
+        foods.push({title:'durum', ok: 600, values: [400,600], photo: 'static/durum.png' });
+        foods.push({title:'torrijas', ok: 200, values: [200,500], photo: 'static/torrijas.png' });
         foods.push({title:'doritos', ok: 200, values: [50,200], photo: 'static/doritos.png' });
 
 
