@@ -139,13 +139,13 @@
 
         #player, #final_image {
             
-            image-rendering: pixelated;
+            /*image-rendering: pixelated;*/
 	        -webkit-filter: drop-shadow(6px 6px 10px rgba(0,0,0,0.4));
         }
 
         #item {
 
-            image-rendering: pixelated;
+            /*image-rendering: pixelated;*/
         }
 
 
@@ -369,6 +369,9 @@
         foods.push({title:'durum', ok: 600, values: [400,600], photo: 'static/durum.png' });
         foods.push({title:'torrijas', ok: 200, values: [200,500], photo: 'static/torrijas.png' });
         foods.push({title:'doritos', ok: 200, values: [50,200], photo: 'static/doritos.png' });
+        foods.push({title:'patatas fritas', ok: 300, values: [100,300], photo: 'static/patatas.png' });
+        foods.push({title:'hotdog', ok: 300, values: [200,300], photo: 'static/hotdog.png' });
+        foods.push({title:'pizza', ok: 300, values: [300,600], photo: 'static/pizza.png' });
 
 
         foods.sort(() => Math.random() - 0.5);
