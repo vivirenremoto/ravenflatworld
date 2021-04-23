@@ -535,18 +535,38 @@
 
                 current_items++;
 
+                
+                $('#count').html(max_items - current_items);
+
+
+
             }else{
                 $('#modal img').attr('src', 'static/no.png');
             }
 
             
             
-            setTimeout(function(){
+
+            
+            if ( current_items == max_items) {
+
+                $('#player').removeClass('player_walking').addClass('player_drinking');
+
+                
+                $('#modal').hide();
+                endGame();
+            }else{
+                setTimeout(function(){
                 $('#modal').hide();
 
                 
                 $('#modal button').attr('disabled', false);
             }, 500);
+            }
+
+
+
+
             
 
         }
@@ -608,11 +628,13 @@
 
 
 
+                /*
                 if (!game_finish && current_items == max_items) {
 
 
                     endGame();
                 }
+                */
 
 
 
@@ -830,7 +852,9 @@
 
                     clearInterval(player_walking);
 
-                    $('#player').removeClass('player_walking').addClass('player_drinking');
+                    
+                    
+                    //$('#player').removeClass('player_walking').addClass('player_drinking');
 
 
                     
