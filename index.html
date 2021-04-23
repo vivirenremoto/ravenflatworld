@@ -352,6 +352,7 @@
 
 
     <script>
+        var prev_rand;
 
         var index_food = -1;
         var foods = [];
@@ -363,7 +364,7 @@
 
 
         foods.sort(() => Math.random() - 0.5);
-        
+
 
 
         $('#item').css('background-image', "url('" + foods[0].photo + "')").css('background-position','center center').css('background-repeat','no-repeat');
@@ -414,40 +415,7 @@
         $('#count').html(max_items);
 
         // delimitar zonas para que los edificios no se sobrepongan
-        if (is_mobile) {
-            var zones = [
-                {
-                    start_x: 0,
-                    end_x: screen_width,
-                    start_y: 0,
-                    end_y: (screen_height / 4) * 1
-                },
-
-                {
-                    start_x: 0,
-                    end_x: screen_width,
-                    start_y: (screen_height / 4) * 1,
-                    end_y: (screen_height / 4) * 2
-                },
-
-                {
-                    start_x: 0,
-                    end_x: screen_width,
-                    start_y: (screen_height / 4) * 2,
-                    end_y: (screen_height / 4) * 3
-                },
-
-                {
-                    start_x: 0,
-                    end_x: screen_width,
-                    start_y: (screen_height / 4) * 3,
-                    end_y: ((screen_height / 4) * 4)
-                },
-
-            ];
-
-
-        } else {
+       
             var zones = [
                 {
                     start_x: 0,
@@ -479,8 +447,6 @@
 
             ];
 
-
-        }
 
 
         function randomNumber(min, max) {
@@ -689,10 +655,26 @@
 
 
             var rand = randomNumber(0, 3);
+
+            if( rand == prev_rand ){
+                rand = randomNumber(0, 3);
+            }
+
+            prev_rand = rand;
+
+            
             var zone = zones[rand];
 
             var pos_x = randomNumber(zone.start_x, zone.end_x - 100);
             var pos_y = randomNumber(zone.start_y, zone.end_y - 100);
+
+
+
+                //var pos_x = zone.start_x + screen_width/4;
+                //var pos_y = zone.start_y + screen_height/4;
+
+            
+
 
 
             $(id).css('left', pos_x).css('top', pos_y);
