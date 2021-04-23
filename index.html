@@ -353,6 +353,7 @@
 
     <script>
         var prev_rand;
+        var correct_answer;
 
         var index_food = -1;
         var foods = [];
@@ -488,6 +489,8 @@
             $(obj).attr('disabled', true);
 
 
+
+            
             if( foods[index_food].ok == value ){
                 $('#modal img').attr('src', 'static/ok.png');
 
@@ -498,8 +501,12 @@
 
 
 
+                correct_answer = true;
             }else{
                 $('#modal img').attr('src', 'static/no.png');
+
+                
+                correct_answer = false;
             }
 
             
@@ -518,6 +525,22 @@
                 $('#modal').hide();
 
                 
+
+                if( correct_answer ){
+                    $('#player').removeClass('player_walking').addClass('player_drinking');
+
+
+                        
+
+
+                    setTimeout(function () {
+                        if (current_items != max_items) {
+                            $('#player').removeClass('player_drinking');
+                        }
+                    }, 1000);
+
+                }
+
                 $('#modal button').attr('disabled', false);
             }, 500);
             }
@@ -834,26 +857,12 @@
 
                     
                     
-                    //$('#player').removeClass('player_walking').addClass('player_drinking');
-
-
                     
 
 
-                    setTimeout(function () {
-                        if (current_items != max_items) {
-                            $('#player').removeClass('player_drinking');
-                        }
-                    }, 1000);
 
 
-
-
-                    
-
-
-                    $('#count').html(max_items - current_items);
-
+ 
 
                     enemy_dead = true;
 
