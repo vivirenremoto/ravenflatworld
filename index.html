@@ -702,12 +702,18 @@
 
 
         randomPos('#item');
-        randomPos('#player');
+        //randomPos('#player');
         randomEnemy();
         randomPos('#enemy');
 
-        current_x = parseInt($('#player').css('left'));
-        current_y = parseInt($('#player').css('top'));
+
+
+        
+        current_x = (screen_width-player_width) / 2;
+        current_y = (screen_height-player_height) / 2;
+
+        $('#player').css('left', current_x+'px');
+        $('#player').css('top', current_y+'px');
 
 
 
