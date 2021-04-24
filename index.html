@@ -624,8 +624,7 @@
 
             
 
-            var zone = zones[rand];
-            $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100);
+            randomPos('#item');
 
             updatePalmeras();
             
@@ -1152,7 +1151,7 @@
 
         function updatePalmeras(){
             $('.palmera').each(function(){
-                $(this).css('left', randomNumber(0, screen_width-100) ).css('top', randomNumber(0, screen_height-100) );
+                $(this).css('left', randomNumber(0, screen_width-150) ).css('top', randomNumber(0, screen_height-187) );
             });
         }
 
@@ -1165,6 +1164,9 @@
             screen_height_half = screen_height / 2;
 
 
+            is_mobile = screen_width < 500;
+            
+            
             
 
         
@@ -1191,11 +1193,14 @@
 
             updatePalmeras();
                 
-            if( screen_width < 800 ){
+            if( screen_width < 500 ){
                 $('.palmera').hide();
                 $('.palmera:eq(0)').show();
+                walking_speed = 1;
+
             }else{
                 $('.palmera').show();
+                walking_speed = 1.8;
             }
 
 
