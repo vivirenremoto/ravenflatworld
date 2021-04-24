@@ -382,6 +382,7 @@
 
 
     <script>
+        var prev_item;
         var prev_rand;
         var correct_answer;
 
@@ -523,6 +524,19 @@
 
             $(obj).attr('disabled', true);
 
+
+            var rand = randomNumber(0, 3);
+
+
+
+            if( prev_item == rand ){
+                rand = randomNumber(0, 3);
+            }
+            prev_item = rand;
+
+
+            var zone = zones[rand];
+            $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
 
 
             
@@ -1097,6 +1111,13 @@
 
 
             var rand = randomNumber(0, 3);
+
+
+            if( prev_item == rand ){
+                rand = randomNumber(0, 3);
+            }
+            prev_item = rand;
+
             var zone = zones[rand];
             $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
 
