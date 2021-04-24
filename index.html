@@ -301,7 +301,7 @@
 
 
 
-            #result{
+            #intro, #result{
                 overflow-y:scroll;
             }
 
@@ -627,6 +627,7 @@
             var zone = zones[rand];
             $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100);
 
+            updatePalmeras();
             
 
             setTimeout(function(){
@@ -1149,6 +1150,12 @@
 
         }
 
+        function updatePalmeras(){
+            $('.palmera').each(function(){
+                $(this).css('left', randomNumber(0, screen_width-100) ).css('top', randomNumber(0, screen_height-100) );
+            });
+        }
+
 
         $(window).resize(function(){
             screen_width = $(document).width();
@@ -1181,11 +1188,8 @@
             $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
 
 
-            $('.palmera').each(function(){
-                $(this).css('left', randomNumber(0, screen_width-100) ).css('top', randomNumber(0, screen_height-100) );
-            });
 
-
+            updatePalmeras();
                 
             if( screen_width < 800 ){
                 $('.palmera').hide();
@@ -1193,6 +1197,7 @@
             }else{
                 $('.palmera').show();
             }
+
 
             
             //$('.palmera').attr('src','static/palmera.png');
