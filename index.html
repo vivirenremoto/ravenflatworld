@@ -636,7 +636,7 @@
 
             randomPos('#item');
 
-            updatePalmeras();
+            //updatePalmeras();
             
 
             setTimeout(function(){
@@ -704,6 +704,8 @@
             }
 
             $('#item').css('background-image', "url('" + foods[next_index_food].photo + "')");
+
+            randomPos('#item');
 
 
 
@@ -1164,6 +1166,7 @@
                 $(this).css('left', randomNumber(0, screen_width-150) ).css('top', randomNumber(0, screen_height-187) );
             });
         }
+        
 
 
         $(window).resize(function(){
@@ -1196,9 +1199,9 @@
             }
             prev_item = rand;
 
-            var zone = zones[rand];
-            $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
-
+            //var zone = zones[rand];
+            //$('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
+            randomPos('#item');
 
 
             updatePalmeras();
