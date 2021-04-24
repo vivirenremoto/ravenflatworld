@@ -31,7 +31,12 @@
     <link rel="prefetch" href="static/ok2.png" />
     <link rel="prefetch" href="static/no2.png" />
 
+    
+    <link rel="prefetch" href="static/ok.mp3" />
+    <link rel="prefetch" href="static/ko.mp3" />
+    <link rel="prefetch" href="static/music3.mp3" />
 
+    
     <meta property="og:image" content="https://vivirenremoto.github.io/ravenflatworld/static/social.png">
     <meta property="og:image:secure_url" content="https://vivirenremoto.github.io/ravenflatworld/static/social.png">
     <meta property="og:image:alt" content="Fat World">
@@ -319,6 +324,10 @@
             <button onclick="chooseOption(this)" style="cursor:pointer;background:white;border:5px black solid;width:130px;text-align:center;font-size:60px;font-weight:bold;">600 KCAL</button>
         </div>
 
+        <img src="static/palmera.png" class="palmera" style="position:fixed;left:30%;bottom:30%;" width="150">
+        <img src="static/palmera.png" class="palmera" style="position:fixed;left:30%;bottom:30%;" width="150">
+        <img src="static/palmera.png" class="palmera" style="position:fixed;left:30%;bottom:30%;" width="150">
+
     </div>
 
     <div id="result"
@@ -340,7 +349,7 @@
 
 
     <audio id="sound_music" loop>
-        <source src="static/music.mp3" type="audio/mp3">
+        <source src="static/music3.mp3" type="audio/mp3">
     </audio>
 
 
@@ -350,10 +359,14 @@
 
 
     <audio id="sound_fail">
-        <source src="static/fail.mp3" type="audio/mp3">
+        <source src="static/ko.mp3" type="audio/mp3">
     </audio>
 
 
+
+    <audio id="sound_ok">
+        <source src="static/ok.mp3" type="audio/mp3">
+    </audio>
 
 
 
@@ -421,6 +434,8 @@
 
         var sound_item = document.getElementById('sound_item');
         var sound_fail = document.getElementById('sound_fail');
+        var sound_ok = document.getElementById('sound_ok');
+
 
 
         $('#count').html(max_items);
@@ -511,9 +526,13 @@
 
 
 
+                sound_ok.play();
+
                 correct_answer = true;
             }else{
                 $('#modal img').attr('src', 'static/no2.png');
+
+                sound_fail.play();
 
                 
                 correct_answer = false;
@@ -523,16 +542,18 @@
             
 
             setTimeout(function(){
+
+
+                
+                $('#modal').hide();
                 
                 if ( current_items == max_items) {
 
                     $('#player').removeClass('player_walking').addClass('player_drinking');
 
                     
-                    $('#modal').hide();
                     endGame();
                 }else{
-                    $('#modal').hide();
 
                     
                     $('#player').removeClass('player_walking');
@@ -822,7 +843,7 @@
 
             if (!music_playing) {
                 music_playing = true;
-////////////////                sound_music.play();
+                sound_music.play();
             }
 
 
@@ -1070,9 +1091,23 @@
             $('#item').css('left', zone.start_x + 100).css('top', zone.start_y + 100).show();
 
 
+            $('.palmera').each(function(){
+                $(this).css('left', randomNumber(0, screen_width-100) ).css('top', randomNumber(0, screen_height-100) );
+            });
+
+
+                
+            if( screen_width < 800 ){
+                $('.palmera').hide();
+                $('.palmera:eq(0)').show();
+            }else{
+                $('.palmera').show();
+            }
 
 
         });
+
+        $(window).resize();
 
 
     </script>
