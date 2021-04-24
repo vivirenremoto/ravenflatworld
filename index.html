@@ -264,6 +264,12 @@
         @media screen and (max-width: 480px) {
 
 
+            iframe{
+                width:480px;
+                max-width:100%;
+                height:280px;
+            }
+
 
             #player {
                 width: 85px;
@@ -302,14 +308,37 @@
     </style>
 
 
-    <a href="https://twitter.com/vivirenremoto" target="_blank" style="z-index:10;position:fixed;right:10px;top:0;">by
-        vivirenremoto</a>
 
 
-    <div id="player" class="player " style="z-index:2;position:fixed;">
+
+    <div id="intro" style="text-align:center;position:fixed;left:0;top:0;width:100%;height:100%;">
+
+        <h1>¿Por qué Fat World?</h1>
+
+
+
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/pIRXz5jxFNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <br>
+
+        <button onclick="startGame()" class="button">JUGAR</button>
+
+        <a href="https://itch.io/jam/ravenjam-remake/rate/1009546" target="_blank" class="button">VALORAR JUEGO</a>
+
+
     </div>
 
-    <div id="game">
+    
+    <div id="game" style="display:none">
+
+        <a href="https://twitter.com/vivirenremoto" target="_blank" style="z-index:10;position:fixed;right:10px;top:0;">by
+            vivirenremoto</a>
+
+        <div id="player" class="player " style="z-index:2;position:fixed;">
+        </div>
+    
+    
 
         <div id="canvas" style="z-index:9;position:fixed;left:0;top:0;width:100%;height:100%;"></div>
 
@@ -353,7 +382,7 @@
 
         <a href="javascript:share()" class="button">COMPARTIR</a>
 
-        <a href="https://itch.io/jam/ravenjam-remake/rate/1009546" target="_blank" class="button">VALORAR JUEGO RAVENJAM</a>
+        <a href="https://itch.io/jam/ravenjam-remake/rate/1009546" target="_blank" class="button">VALORAR JUEGO</a>
 
 
 
@@ -454,6 +483,19 @@
         var sound_ok = document.getElementById('sound_ok');
 
 
+        function startGame(){
+            $('iframe').remove();
+
+            $('#intro').hide();
+            $('#game').show();
+
+            
+            if (!music_playing) {
+                music_playing = true;
+                sound_music.play();
+            }
+
+        }
 
         $('#count').html(max_items);
 
@@ -872,11 +914,6 @@
 
 
         $('#canvas').click(function (e) {
-
-            if (!music_playing) {
-                music_playing = true;
-                sound_music.play();
-            }
 
 
 
