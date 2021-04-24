@@ -813,8 +813,14 @@
             var rand = randomNumber(0, 3);
 
             if( rand == prev_rand ){
-                rand = randomNumber(0, 3);
+                for(var i=0; i<4; i++){
+                    if( rand != prev_rand ){
+                        rand = i;
+                    }
+                }
             }
+
+
 
             prev_rand = rand;
 
